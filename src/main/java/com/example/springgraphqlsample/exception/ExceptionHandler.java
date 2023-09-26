@@ -1,5 +1,7 @@
 package com.example.springgraphqlsample.exception;
 
+import java.util.NoSuchElementException;
+
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.graphql.execution.DataFetcherExceptionResolverAdapter;
 import org.springframework.graphql.execution.ErrorType;
@@ -17,6 +19,8 @@ public class ExceptionHandler extends DataFetcherExceptionResolverAdapter {
         ErrorType type = null;
         if (ex instanceof DataIntegrityViolationException) {
             type = ErrorType.BAD_REQUEST;
+        } else if (ex instanceof NoSuchElementException) {
+            type = ErrorType.NOT_FOUND;
         } else {
             type = ErrorType.INTERNAL_ERROR;
         }
