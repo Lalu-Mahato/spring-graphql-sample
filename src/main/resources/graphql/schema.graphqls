@@ -6,6 +6,8 @@ type Query {
   customerByEmail(email: String): Customer
   findProducts: [Product]!
   productById(id: String): Product
+  salespersonById(id: Int): Salesperson
+  salespersonByEmail(email: String): Salesperson
 }
 
 type Mutation {
@@ -34,12 +36,24 @@ type Customer {
 }
 
 type Product {
-    id: ID!
-    name: String!
-    size: Int!
-    variety: String!
-    price: Float!
-    status: String!
+  id: ID!
+  name: String!
+  size: Int!
+  variety: String!
+  price: Float!
+  status: String!
+}
+
+type Salesperson {
+  id: ID!
+  firstName: String!
+  lastName: String!
+  email: String!
+  phoneNumber: String!
+  address: String!
+  city: String!
+  state: String!
+  zipCode: String!
 }
 
 input CustomerInput {
