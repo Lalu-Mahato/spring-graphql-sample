@@ -1,10 +1,14 @@
 type Query {
   findAll: [User]
   userById(userId: Int): User
+  findCustomers: [Customer]!
+  customerById(id: Int): Customer
+  customerByEmail(email: String): Customer
 }
 
 type Mutation {
   createUser(firstName: String, lastName: String, email: String, password: String): User
+  addCustomer(input: CustomerInput): Customer
 }
 
 type User {
@@ -13,4 +17,27 @@ type User {
   lastName: String
   email: String!
   password: String!
+}
+
+type Customer {
+  id: ID!
+  firstName: String!
+  lastName: String!
+  email: String!
+  phoneNumber: String!
+  address: String!
+  city: String!
+  state: String!
+  zipCode: String!
+}
+
+input CustomerInput {
+  firstName: String!
+  lastName: String!
+  email: String!
+  phoneNumber: String!
+  address: String!
+  city: String!
+  state: String!
+  zipCode: String!
 }
