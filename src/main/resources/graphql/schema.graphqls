@@ -1,30 +1,3 @@
-type Query {
-  findAll: [User]
-  userById(userId: Int): User
-  findCustomers: [Customer]!
-  customerById(id: Int): Customer
-  customerByEmail(email: String): Customer
-  findProducts: [Product]!
-  productById(id: String): Product
-  salespersonById(id: Int): Salesperson
-  salespersonByEmail(email: String): Salesperson
-  findOrders: [Order]!
-  orderById(id: String): Order
-}
-
-type Mutation {
-  createUser(firstName: String, lastName: String, email: String, password: String): User
-  addCustomer(input: CustomerInput): Customer
-}
-
-type User {
-  id: ID!
-  firstName: String!
-  lastName: String
-  email: String!
-  password: String!
-}
-
 type Customer {
   id: ID!
   firstName: String!
@@ -81,4 +54,20 @@ input CustomerInput {
   city: String!
   state: String!
   zipCode: String!
+}
+
+type Query {
+  findCustomers: [Customer]!
+  customerById(id: Int): Customer
+  customerByEmail(email: String): Customer
+  findProducts: [Product]!
+  productById(id: String): Product
+  salespersonById(id: Int): Salesperson
+  salespersonByEmail(email: String): Salesperson
+  findOrders: [Order]!
+  orderById(id: String): Order
+}
+
+type Mutation {
+  addCustomer(input: CustomerInput): Customer
 }
